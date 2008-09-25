@@ -14,6 +14,7 @@
   [super init];
   
   timers = [[NSMutableArray alloc] init];
+  periodicTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(tickAllTimers:) userInfo: nil repeats: YES];
   
   return self;
 }
@@ -31,6 +32,15 @@
   [newTimerDescription setStringValue: @""];
 }
 - (void) deleteTimer: (id) sender {
+}
+- (void) tickAllTimers: (NSTimer *) theTimer {
+  for(TMTimer *timer in timers) {
+    if(![timer stopped]) {
+      [timer tick];
+    }
+  }
+
+  [myTimers reloadData];
 }
 
 // newTimerDescription delegate methods

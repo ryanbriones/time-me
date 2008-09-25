@@ -11,6 +11,7 @@
 @interface ApplicationController : NSObject {
   NSMutableArray *timers;
   NSInteger *rowsVisible;
+  NSTimer *periodicTimer;
   
   IBOutlet NSTextField *newTimerDescription;
   IBOutlet NSButton *addTimerButton;
@@ -20,5 +21,5 @@
 }
 - (IBAction) addTimer: (id) sender;
 - (IBAction) deleteTimer: (id) sender;
-
+- (void) tickAllTimers: (NSTimer *) theTimer;
 @end
