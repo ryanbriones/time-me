@@ -12,27 +12,32 @@
 - (id) initWithDescription: (NSString *) newDescription {
   [super init];
 
-  description = newDescription;
+  timerDescription = newDescription;
   createdAt = [NSCalendarDate calendarDate];
-  lastStartedAt = [createdAt copy];
   durationInSeconds = 0;
+  stopped = NO;
 
   return self;
 }
 
-@synthesize description;
+@synthesize timerDescription;
 @synthesize createdAt;
-@synthesize lastStartedAt;
 @synthesize durationInSeconds;
+@synthesize stopped;
 
 - (void) start {
 }
 - (void) stop {
 }
+- (void) tick {
+  if(![self stopped]) {
+    durationInSeconds++;
+  }
+}
 - (NSDictionary *) attributesForTimer {
   NSNumber *durationAsObject = [NSNumber numberWithInteger: self.durationInSeconds];
-  NSArray *values = [NSArray arrayWithObjects: self.description, self.createdAt, self.lastStartedAt, durationAsObject, nil];
-  NSArray *keys = [NSArray arrayWithObjects: @"description", @"createdAt", @"lastStartedAt", @"durationInSeconds", nil];
+  NSArray *values = [NSArray arrayWithObjects: self.timerDescription, self.createdAt, durationAsObject, nil];
+  NSArray *keys = [NSArray arrayWithObjects: @"timerDescription", @"createdAt", @"durationInSeconds", nil];
 
   return [NSDictionary dictionaryWithObjects: values forKeys: keys];
 }

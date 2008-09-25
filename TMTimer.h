@@ -9,20 +9,21 @@
 
 
 @interface TMTimer : NSObject {
-  NSString *description;
+  NSString *timerDescription;
   NSCalendarDate *createdAt;
-  NSCalendarDate *lastStartedAt;
   NSInteger durationInSeconds;
+  BOOL stopped;
 }
 
-@property (assign,readwrite) NSString *description;
+@property (assign,readwrite) NSString *timerDescription;
 @property (assign,readonly) NSCalendarDate *createdAt;
-@property (assign,readonly) NSCalendarDate *lastStartedAt;
 @property (assign,readonly) NSInteger durationInSeconds;
+@property (assign,readonly) BOOL stopped;
 
 - (id) initWithDescription: (NSString *) newDescription;
 - (void) start;
 - (void) stop;
+- (void) tick;
 - (NSDictionary *) attributesForTimer;
 
 @end

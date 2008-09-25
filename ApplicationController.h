@@ -15,6 +15,7 @@
   IBOutlet NSTextField *newTimerDescription;
   IBOutlet NSButton *addTimerButton;
   IBOutlet NSButton *deleteTimerButton;
+  IBOutlet NSButton *stopTimerButton;
   IBOutlet NSTableView *myTimers;
 }
 - (IBAction) addTimer: (id) sender;

@@ -27,7 +27,6 @@
 
   [newTimerDescription setStringValue: @""];
 }
-
 - (void) deleteTimer: (id) sender {
 }
 
