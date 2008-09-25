@@ -20,6 +20,9 @@
 
 - (void) addTimer: (id) sender {
   NSString *timer_desc = [newTimerDescription stringValue];
+  if([timer_desc isEqualToString:@""]) {
+    return;
+  }
   
   TMTimer *newTimer = [[TMTimer alloc] initWithDescription: timer_desc];
   [timers addObject: newTimer];
