@@ -16,10 +16,11 @@
   IBOutlet NSTextField *newTimerDescription;
   IBOutlet NSButton *addTimerButton;
   IBOutlet NSButton *deleteTimerButton;
-  IBOutlet NSButton *stopTimerButton;
+  IBOutlet NSButton *toggleTimerButton;
   IBOutlet NSTableView *myTimers;
 }
 - (IBAction) addTimer: (id) sender;
+- (IBAction) toggleTimer: (id) sender;
 - (IBAction) deleteTimer: (id) sender;
 - (void) tickAllTimers: (NSTimer *) theTimer;
 @end

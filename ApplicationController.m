@@ -33,10 +33,24 @@
 }
 - (void) deleteTimer: (id) sender {
 }
+- (void) toggleTimer: (id) sender {
+  int row = [myTimers selectedRow];
+  if (row == -1) {
+    return;
+  }
+
+  if ([[timers objectAtIndex: row] stopped]) {
+    [[timers objectAtIndex: row] restartTimer];
+    [toggleTimerButton setTitle: @"Stop Timer"];
+  } else {
+    [[timers objectAtIndex: row] stopTimer];
+    [toggleTimerButton setTitle: @"Restart Timer"];
+  }
+}
 - (void) tickAllTimers: (NSTimer *) theTimer {
   for(TMTimer *timer in timers) {
     if(![timer stopped]) {
-      [timer tick];
+      [timer tickTimer];
     }
   }
 
@@ -66,6 +80,19 @@
   
   NSString *key = [tableColumn identifier];
   return [timerAttributes objectForKey: key];
+}
+- (void) tableViewSelectionDidChange: (NSNotification *) notification {
+  int row = [myTimers selectedRow];
+  if (row == -1) {
+    [toggleTimerButton setTitle: @"Stop Timer"];
+    return;
+  }
+
+  if ([[timers objectAtIndex: row] stopped]) {
+    [toggleTimerButton setTitle: @"Restart Timer"];
+  } else {
+    [toggleTimerButton setTitle: @"Stop Timer"];
+  }
 }
 
 @end

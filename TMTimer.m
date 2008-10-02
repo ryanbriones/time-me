@@ -25,11 +25,15 @@
 @synthesize durationInSeconds;
 @synthesize stopped;
 
-- (void) start {
+- (void) startTimer {
 }
-- (void) stop {
+- (void) restartTimer {
+  stopped = NO;
 }
-- (void) tick {
+- (void) stopTimer {
+  stopped = YES;
+}
+- (void) tickTimer {
   if(![self stopped]) {
     durationInSeconds++;
   }

@@ -21,9 +21,10 @@
 @property (assign,readonly) BOOL stopped;
 
 - (id) initWithDescription: (NSString *) newDescription;
-- (void) start;
-- (void) stop;
-- (void) tick;
+- (void) startTimer;
+- (void) restartTimer;
+- (void) stopTimer;
+- (void) tickTimer;
 - (NSDictionary *) attributesForTimer;
 
 @end
