@@ -32,6 +32,18 @@
   [newTimerDescription setStringValue: @""];
 }
 - (void) deleteTimer: (id) sender {
+  int row = [myTimers selectedRow];
+  if (row == -1) {
+    return;
+  }
+
+  if ([[timers objectAtIndex: row] stopped]) {
+    [timers removeObjectAtIndex: row];
+  } else {
+    // alert user that they are removing a timer that is not stoppped
+  }
+
+  [myTimers reloadData];
 }
 - (void) toggleTimer: (id) sender {
   int row = [myTimers selectedRow];
